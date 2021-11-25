@@ -43,7 +43,7 @@
 {% endmacro %}
 
 {% macro athena__string_type() %}
-    STRING
+    VARCHAR
 {% endmacro %}
 
 {% macro integer_type() %}

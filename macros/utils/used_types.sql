@@ -18,6 +18,10 @@
     TIMESTAMP_NTZ
 {% endmacro %}
 
+{% macro athena__timestamp_type() %}
+    TIMESTAMP
+{% endmacro %}
+
 {% macro string_type() %}
     {{ adapter.dispatch('string_type', 're_data')() }}
 {% endmacro %}
@@ -35,6 +39,10 @@
 {% endmacro %}
 
 {% macro snowflake__string_type() %}
+    STRING
+{% endmacro %}
+
+{% macro athena__string_type() %}
     STRING
 {% endmacro %}
 
@@ -63,6 +71,10 @@
     BOOLEAN
 {% endmacro %}
 
+{% macro athena__boolean_type() %}
+    BOOLEAN
+{% endmacro %}
+
 
 {% macro numeric_type() %}
     {{ adapter.dispatch('numeric_type', 're_data')() }}
@@ -82,6 +94,10 @@
 
 {% macro snowflake__numeric_type() %}
     FLOAT
+{% endmacro %}
+
+{% macro athena__numeric_type() %}
+    DOUBLE
 {% endmacro %}
 
 

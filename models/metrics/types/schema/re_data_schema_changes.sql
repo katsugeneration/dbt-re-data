@@ -37,13 +37,13 @@
 
     with curr_schema as (
         select * from {{ ref('re_data_columns_over_time')}}
-        where detected_time = '{{ most_recent_time }}'
+        where detected_time = cast( '{{ most_recent_time.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3] }}' as {{ timestamp_type() }} )
     ),
 
 
     prev_schema as (
         select * from {{ ref('re_data_columns_over_time')}}
-        where detected_time = '{{ prev_most_recent}}'
+        where detected_time = cast( '{{ prev_most_recent.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3] }}' as {{ timestamp_type() }} )
     ),
 
     all_changes as (
